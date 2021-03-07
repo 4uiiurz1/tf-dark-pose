@@ -22,6 +22,8 @@ def _parse_args():
     parser.add_argument('config_path',
                         default='configs/res50_128x96_d256x3_adam_lr1e-3.yaml',
                         help='Path to config file.')
+    parser.add_argument('--dataset_root',
+                        help='Path to dataset root.')
 
     args = parser.parse_args()
 
@@ -211,6 +213,8 @@ def main():
     # Get config
     with open(args.config_path, 'r') as f:
         config = OmegaConf.load(f)
+    if args.dataset_root is not None:
+        config.dataset.root = args.dataset_root
 
     # Create model directory
     model_dir = os.path.join('models', config.name)
