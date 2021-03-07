@@ -1,0 +1,7 @@
+tensorflow==2.1.3
+albumentations
+omegaconf
+loguru
+tqdm
+json_tricks
+pycocotools
